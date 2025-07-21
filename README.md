@@ -23,3 +23,50 @@ git push --set-upstream origin main
 ```sh
 pnpm run dev
 ```
+
+3. Configure Project
+
+```sh
+## INSTALL AND CONFIGURE PRETTIER
+pnpm add -D prettier prettier-plugin-astro
+```
+
+Create `.prettierrc` in the root.
+
+```json
+{
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ],
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "printWidth": 80
+}
+```
+
+Create `.prettierignore` in the root
+
+```json
+node_modules/
+dist/
+.astro/
+```
+
+Update `package.json` to include ...
+
+```json
+{
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  }
+}
+```
